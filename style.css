@@ -1,0 +1,631 @@
+/* Importação da fonte Poppins do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* Variáveis CSS para as cores */
+:root {
+    --laranja-destaque: #FF6600;
+    --preto-carvao: #1C1C1C;
+    --branco-puro: #FFFFFF;
+    --cinza-claro: #f4f4f4;
+}
+
+/* Estilos de base para todo o site */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--preto-carvao);
+    color: var(--branco-puro);
+    line-height: 1.6;
+}
+
+/* Estilos de título */
+h1, h2, h3 {
+    font-weight: 700;
+    color: var(--laranja-destaque);
+}
+
+/* Estilo para links e botões */
+a {
+    text-decoration: none;
+    color: var(--laranja-destaque);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #ff8c00; /* Um laranja um pouco mais claro no hover */
+}
+
+.cta-button {
+    background-color: var(--laranja-destaque);
+    color: var(--preto-carvao);
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+
+.cta-button:hover {
+    background-color: #ff8c00;
+    transform: translateY(-2px);
+}
+/* Estilos do Cabeçalho e Hero Section */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-image: url('imagens/hero-bg.jpg'); /* Caminho para a imagem de fundo */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    padding: 0 20px;
+}
+
+/* Overlay para contraste na Hero Section */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Fundo escuro semi-transparente para o texto se destacar */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+/* Estilos da barra de navegação */
+nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+}
+
+.logo img {
+    height: 50px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: var(--branco-puro);
+    font-weight: 600;
+}
+/* Estilos para as seções */
+section {
+    padding: 80px 50px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+}
+/* Estilos da Seção de Serviços */
+.servicos-section {
+    background-color: var(--cinza-claro);
+    color: var(--preto-carvao);
+}
+
+.servicos-section h2 {
+    color: var(--preto-carvao);
+}
+
+.servicos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.servico-item {
+    background-color: var(--branco-puro);
+    padding: 40px 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.servico-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.servico-item img {
+    height: 60px;
+    margin-bottom: 20px;
+}
+/* Estilos da Seção de Portfólio */
+.portfolio-categorias {
+    margin-bottom: 30px;
+}
+
+.portfolio-categorias button {
+    background-color: transparent;
+    border: 2px solid var(--laranja-destaque);
+    color: var(--laranja-destaque);
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.portfolio-categorias button:hover,
+.portfolio-categorias button.active {
+    background-color: var(--laranja-destaque);
+    color: var(--preto-carvao);
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.portfolio-item img:hover {
+    transform: scale(1.05);
+}
+/* Estilos da Seção de Serviços - Ajuste nas imagens */
+ .servicos-grid .servico-item img {
+     max-width: 80px; /* Aumenta o tamanho máximo da largura */
+     height: auto;      /* Mantém a proporção da altura */
+     margin-bottom: 20px;
+ }
+ /* Estilos da Seção de Portfólio - Ajuste nas imagens */
+.portfolio-grid .portfolio-item img {
+    width: 100%;
+    height: auto; /* Ajusta a altura para manter a proporção */
+    min-height: 200px; /* Garante uma altura mínima */
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+/* Importação da fonte Poppins do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* Variáveis CSS para as cores */
+:root {
+    --laranja-destaque: #FF6600;
+    --preto-carvao: #1C1C1C;
+    --branco-puro: #FFFFFF;
+    --cinza-claro: #f4f4f4;
+}
+
+/* Estilos de base para todo o site */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--preto-carvao);
+    color: var(--branco-puro);
+    line-height: 1.6;
+}
+
+/* Estilos de título */
+h1, h2, h3 {
+    font-weight: 700;
+    color: var(--laranja-destaque);
+}
+
+/* Estilo para links e botões */
+a {
+    text-decoration: none;
+    color: var(--laranja-destaque);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #ff8c00; /* Um laranja um pouco mais claro no hover */
+}
+
+.cta-button {
+    background-color: var(--laranja-destaque);
+    color: var(--preto-carvao);
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+
+.cta-button:hover {
+    background-color: #ff8c00;
+    transform: translateY(-2px);
+}
+
+/* Estilos do Cabeçalho e Hero Section */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-image: url('imagens/hero-bg.jpg'); /* Substitua pelo seu caminho */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    padding: 0 20px;
+}
+
+/* Overlay para contraste na Hero Section */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Fundo escuro semi-transparente para o texto se destacar */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+/* Estilos da barra de navegação */
+nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+}
+
+.logo img {
+    height: 50px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: var(--branco-puro);
+    font-weight: 600;
+}
+
+/* Estilos para as seções */
+section {
+    padding: 80px 50px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+}
+
+/* Estilos da Seção de Serviços */
+.servicos-section {
+    background-color: var(--cinza-claro);
+    color: var(--preto-carvao);
+}
+
+.servicos-section h2 {
+    color: var(--preto-carvao);
+}
+
+.servicos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.servico-item {
+    background-color: var(--branco-puro);
+    padding: 40px 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    text-align: center; /* Centraliza o conteúdo dentro do item de serviço */
+}
+
+.servico-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.servico-grid .servico-item img {
+    max-width: 80px; /* Aumenta o tamanho máximo da largura */
+    height: auto;      /* Mantém a proporção da altura */
+    margin-bottom: 20px;
+}
+
+/* Estilos da Seção de Portfólio */
+.portfolio-categorias {
+    margin-bottom: 30px;
+}
+
+.portfolio-categorias button {
+    background-color: transparent;
+    border: 2px solid var(--laranja-destaque);
+    color: var(--laranja-destaque);
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.portfolio-categorias button:hover,
+.portfolio-categorias button.active {
+    background-color: var(--laranja-destaque);
+    color: var(--preto-carvao);
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.portfolio-grid .portfolio-item img {
+    width: 100%;
+    height: auto; /* Ajusta a altura para manter a proporção */
+    min-height: 200px; /* Garante uma altura mínima */
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.portfolio-grid .portfolio-item img:hover {
+    transform: scale(1.05);
+}
+
+/* Estilos da Seção Sobre Nós */
+.sobre-nos-section {
+    background-color: var(--laranja-destaque);
+    color: var(--preto-carvao);
+}
+
+.sobre-nos-section h2 {
+    color: var(--preto-carvao);
+}
+
+.sobre-nos-section p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+}
+
+/* Estilos da Seção de Contato */
+.contato-section {
+    background-color: var(--preto-carvao);
+}
+
+#contato-form {
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#contato-form input,
+#contato-form textarea {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    background-color: #333;
+    color: var(--branco-puro);
+    border-radius: 5px;
+}
+
+#contato-form input::placeholder,
+#contato-form textarea::placeholder {
+    color: #bbb;
+}
+
+#contato-form button {
+    background-color: var(--laranja-destaque);
+    color: var(--preto-carvao);
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#contato-form button:hover {
+    background-color: #ff8c00;
+}
+
+.contato-info a,
+.contato-info p {
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+/* Estilos do Lightbox (Galeria de Imagens) */
+.lightbox {
+    display: none; /* Inicia oculto */
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.lightbox-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #bbb;
+}
+/* Estilos da Área Administrativa */
+.admin-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--preto-carvao);
+}
+
+.container {
+    max-width: 500px;
+    width: 90%;
+    background-color: #2c2c2c;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+#login-section, #admin-dashboard {
+    text-align: center;
+}
+
+#login-form input, #upload-form input {
+    margin-bottom: 15px;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background-color: #3e3e3e;
+    color: var(--branco-puro);
+    border-radius: 5px;
+}
+
+.error {
+    color: #ff4d4d;
+    margin-top: 10px;
+}
+
+.dashboard-actions {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.upload-section {
+    border-top: 1px solid #444;
+    padding-top: 20px;
+    margin-top: 20px;
+    text-align: left;
+}
+
+.portfolio-list {
+    margin-top: 40px;
+    text-align: left;
+}
+
+#portfolio-items-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#portfolio-items-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #444;
+}
+
+#portfolio-items-list li:last-child {
+    border-bottom: none;
+}
+
+#portfolio-items-list button {
+    background-color: #ff4d4d;
+    color: var(--branco-puro);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#portfolio-items-list button:hover {
+    background-color: #cc0000;
+}

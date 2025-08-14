@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOOCUS DESIGN 360º - Área Administrativa</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="admin-page">
+
+    <main class="container">
+        <div id="login-section">
+            <h2>Login Administrativo</h2>
+            <form id="login-form">
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="password" placeholder="Palavra-passe" required>
+                <button type="submit" class="cta-button">Entrar</button>
+                <p id="error-message" class="error"></p>
+            </form>
+        </div>
+
+        <div id="admin-dashboard" style="display: none;">
+            <h2>Painel de Administração</h2>
+            <div class="dashboard-actions">
+                <button id="logout-btn" class="cta-button">Sair</button>
+            </div>
+
+            <div class="upload-section">
+                <h3>Adicionar nova imagem</h3>
+                <form id="upload-form">
+                    <input type="text" id="image-title" placeholder="Título da Imagem" required>
+                    <input type="text" id="image-category" placeholder="Categoria" required>
+                    <input type="file" id="image-file" accept="image/*" required>
+                    <button type="submit" class="cta-button">Fazer Upload</button>
+                </form>
+            </div>
+
+            <div class="portfolio-list">
+                <h3>Portfólio Atual</h3>
+                <ul id="portfolio-items-list">
+                    </ul>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
