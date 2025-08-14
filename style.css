@@ -207,12 +207,6 @@ h2 {
 .portfolio-item img:hover {
     transform: scale(1.05);
 }
-/* Estilos da Seção de Serviços - Ajuste nas imagens */
- .servicos-grid .servico-item img {
-     max-width: 80px; /* Aumenta o tamanho máximo da largura */
-     height: auto;      /* Mantém a proporção da altura */
-     margin-bottom: 20px;
- }
  /* Estilos da Seção de Portfólio - Ajuste nas imagens */
 .portfolio-grid .portfolio-item img {
     width: 100%;
@@ -384,7 +378,7 @@ h2 {
     border-radius: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
-    text-align: center; /* Centraliza o conteúdo dentro do item de serviço */
+    text-align: center;
 }
 
 .servico-item:hover {
@@ -392,9 +386,10 @@ h2 {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-.servico-grid .servico-item img {
-    max-width: 80px; /* Aumenta o tamanho máximo da largura */
-    height: auto;      /* Mantém a proporção da altura */
+/* Regra corrigida para o tamanho da imagem */
+.servico-item img {
+    max-width: 80px;  /* Tamanho ideal para um ícone */
+    height: auto;
     margin-bottom: 20px;
 }
 

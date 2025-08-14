@@ -1,5 +1,5 @@
 // Substitua estas chaves pelas suas chaves do Supabase
-const SUPABASE_URL = 'https://supabase.com/dashboard/project/umrommmfpnusthnjrlqq';
+const SUPABASE_URL = 'https://umrommmfpnusthnjrlqq.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVtcm9tbW1mcG51c3RobmpybHFxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUxNzQ0NTMsImV4cCI6MjA3MDc1MDQ1M30.2YicCLgBDtJUtONBX4IjJKA8mrLkkpRIhEgiVJrf16g';
 
 const supabase = Supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -30,14 +30,29 @@ loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
-    if (error) {
-        errorMessage.textContent = 'Email ou palavra-passe incorretos.';
+    
+    // Tenta fazer o login
+    const { error: signInError } = await supabase.auth.signInWithPassword({ email, password });
+    
+    if (signInError) {
+        // Se o login falhar, tenta criar um novo utilizador
+        const { error: signUpError } = await supabase.auth.signUp({ email, password });
+        
+        if (signUpError) {
+            errorMessage.textContent = 'Erro ao entrar ou registar. Verifique as credenciais ou as configurações.';
+            console.error('Erro ao registar ou entrar:', signUpError);
+        } else {
+            // Sucesso no registo
+            errorMessage.textContent = 'Verifique seu email para confirmar o registo.';
+            alert('Utilizador criado com sucesso! Por favor, verifique seu email para confirmar o registo antes de tentar entrar.');
+        }
     } else {
+        // Sucesso no login
         errorMessage.textContent = '';
         checkUser();
     }
 });
+
 
 logoutBtn.addEventListener('click', async () => {
     await supabase.auth.signOut();
@@ -66,12 +81,19 @@ uploadForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const title = document.getElementById('image-title').value;
     const category = document.getElementById('image-category').value;
-    const file = document.getElementById('image-file').files[0];
+    const fileInput = document.getElementById('image-file');
+    const file = fileInput.files[0];
+    
+    if (!file) {
+        alert('Por favor, selecione um arquivo de imagem.');
+        return;
+    }
 
     // Fazer upload da imagem para o Supabase Storage
+    const filePath = `public/${title}-${Date.now()}.${file.name.split('.').pop()}`;
     const { data: storageData, error: storageError } = await supabase.storage
         .from('portfolio_images')
-        .upload(`${title}-${Date.now()}.${file.name.split('.').pop()}`, file);
+        .upload(filePath, file);
 
     if (storageError) {
         console.error('Erro no upload:', storageError);
@@ -79,8 +101,7 @@ uploadForm.addEventListener('submit', async (e) => {
         return;
     }
 
-    const imagePath = storageData.path;
-    const { data: { publicUrl } } = supabase.storage.from('portfolio_images').getPublicUrl(imagePath);
+    const { data: { publicUrl } } = supabase.storage.from('portfolio_images').getPublicUrl(filePath);
 
     // Inserir os dados na tabela do Supabase
     const { error: dbError } = await supabase.from('portfolio_items').insert([
